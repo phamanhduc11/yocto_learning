@@ -1,0 +1,3 @@
+git ignore files/folders
+=> Update Added files in .gitignore => ignore added files
+=> git update-index --assume-unchanged "files/folder" => ignore modified files
