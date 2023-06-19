@@ -3,7 +3,7 @@ Please remind soft/hard variable assignment
 add
 S = ${WORKDIR}/git
 
-${bindir} var in conf/bitbake.conf
+List of variables (bindir, ...) can be found in conf/bitbake.conf
 
 git default branch = master, when yocto fetch git source.
 specify it by
@@ -33,3 +33,8 @@ git format-patch -1
 
 # Force compiling recipe
 bitbake -c compile <recipe> -f
+
+#PACKAGE
+#FILES
+#defined in conf/bitbake.conf
+
