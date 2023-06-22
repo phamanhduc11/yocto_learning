@@ -34,7 +34,32 @@ git format-patch -1
 # Force compiling recipe
 bitbake -c compile <recipe> -f
 
-#PACKAGE
-#FILES
+#PACKAGE & FILES
 #defined in conf/bitbake.conf
+# Common default PACKAGE is *-dbg *-dev *-doc *-src *-staticdev *-locale and * | "*" is recipe
+# FILE-${PN}-*
+package-split
+> bitbake -e * | grep ^FILE_*-...= 
+FILES_* => files these location will be in * package
+FILES_*-debug = files these location will be in *-debug package
+FILES_*-src = files these location will be in *-src package
+FILES_*-staticdev = files these location will be in *-staticdev package
+FILES_*-locale = files these location will be in *-locale package
+# If 2 or more packages contains same files, only left-most package will contain the file *** <= udemy lesson got it wrong?
+# To check left-most package use command: bitbake -e ${PACKAGE} |  grep ^PACKAGES=        *** <= udemy lesson got it wrong?
+# Can modify ${PN}-*,PACKAGES in .bb
+
+# STATIC/DYNAMIC library
+#STATIC
+${CC} -c *.c
+${AR} rcs lib.a *.o
+
+# when create a library package, ${PN} is empty but still required, we can bypass this by
+ALLOW_EMPTY_${PN}-* = 1
+
+#DYNAMIC
+${CC} -fPIC -c *.o
+${CC} -shared -Wl -soname,lib.so.1 -o lib.so.1.0 *.o
+#DYNAMIC lib name
+# Create symbolic link .so* -> .so 
 
