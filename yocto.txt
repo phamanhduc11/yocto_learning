@@ -63,3 +63,6 @@ ${CC} -shared -Wl -soname,lib.so.1 -o lib.so.1.0 *.o
 #DYNAMIC lib name
 # Create symbolic link .so* -> .so 
 
+# Yocto Dependancy
+DEPENDS => Build-time depends
+RDEPENDS => Run-time depends
