@@ -64,5 +64,5 @@ ${CC} -shared -Wl -soname,lib.so.1 -o lib.so.1.0 *.o
 # Create symbolic link .so* -> .so 
 
 # Yocto Dependancy
-DEPENDS => Build-time depends
-RDEPENDS => Run-time depends
+DEPENDS => Build-time depends (build with .so, .a)
+RDEPENDS => Run-time depends (call other app)
