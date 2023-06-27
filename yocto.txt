@@ -66,3 +66,19 @@ ${CC} -shared -Wl -soname,lib.so.1 -o lib.so.1.0 *.o
 # Yocto Dependancy
 DEPENDS => Build-time depends (build with .so, .a)
 RDEPENDS => Run-time depends (call other app)
+#depends on a specific version
+DEPENDS = "recipe-b (>=1.2)"
+RDEPENDS_${PN} = "recipe-b (>=1.2)"
+
+# Show dependency infomations
+>bitbake -g recipename
+#above command will generate pn-buildlist => list of recipes/targets involved in building recipename
+#above command will generate task-depends.dot => graph show dependencies b/w tasks (using dot tool Graphviz)
+##>dot -Tpdf task-depends.dot -o outfile.pdf
+##>bitbake -g -u taskexp recipename
+
+# noexec
+#This is to not doing specific task
+do_configure[noexec] = "1"
+do_compile[noexec] = "1"
+
