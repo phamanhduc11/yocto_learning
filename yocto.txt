@@ -82,3 +82,18 @@ RDEPENDS_${PN} = "recipe-b (>=1.2)"
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
 
+# Autotools
+# Way to use build software in multiplatform
+#AC_INIT(package, version, bug-report, tarname, url)
+#AM_INIT_AUTOMAKE
+#AC_OUTPUT
+Basic configure.ac file
+AC_INIT([myhello], [1.0], [phamanhduc11@gmail.com])
+AM_INIT_AUTOMAKE
+AC_OUTPUT
+
+# Command to generate configure files
+aclocal - generate m4 environments for autotools
+autoconf - generate configure script
+
+autoreconf --install => rerun all command sequencially
