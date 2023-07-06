@@ -91,9 +91,18 @@ Basic configure.ac file
 AC_INIT([myhello], [1.0], [phamanhduc11@gmail.com])
 AM_INIT_AUTOMAKE
 AC_OUTPUT
+AC_PROG_CC                  <= cause the configure script to search for a C compiler
+AC_CONFIG_FILES([
+Makefile
+])
 
 # Command to generate configure files
 aclocal - generate m4 environments for autotools
 autoconf - generate configure script
 
 autoreconf --install => rerun all command sequencially
+
+# Makefile.am contains
+bin_PROGRAMS = hello-world
+hello-world_SOURCES = hello.c
+
