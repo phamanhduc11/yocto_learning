@@ -1,0 +1,6 @@
+# Autotools application compile steps
+1. Make "tmp" folder
+2. Copy configure.ac + Makefile.am + main.c to "tmp" folder
+3. Run commands
+*autoreconf --install
+*make
