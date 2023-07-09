@@ -4,3 +4,6 @@
 3. Run commands
 *autoreconf --install
 *make
+
+4. make tarball
+*make dist
