@@ -1,0 +1,89 @@
+*CMakeLists.txt
+cmake_minimum_required(VERSION 3.0.0)
+
+project(Calculator_Project VERSION 1.0.0)
+
+add_subdirectory(math_lib_src)
+
+add_subdirectory(print_lib_src)
+
+add_executable(calculator
+main.cpp)
+
+target_link_libraries(calculator my_math my_print)
+
+*main.cpp
+#include <iostream>
+#include <string>
+#include "multiplier.h"
+#include "addition.h"
+#include "printer.h"
+
+using namespace std;
+int main()
+{
+        float a, b, result;
+        cout << "Input a: ";
+        cin >> a;
+        cout << endl;
+        cout << "Input b: ";
+        cin >> b;
+        cout << endl;
+
+        result = add(a,b);
+        print_result("Add result : ", result);
+
+        result = mul(a,b);
+        print_result("Mul result : ", result);
+        return 0;
+}
+
+
+*Folder: build
+empty
+
+*Folder: math_lib_src
+**addition.cpp
+#include "addition.h"
+
+float add(float a, float b) {
+        return a + b;
+}
+**CMakeLists.txt
+add_library(my_math
+addition.cpp
+multiplier.cpp)
+
+target_include_directories(my_math PUBLIC include)
+**multiplier.cpp
+#include "multiplier.h"
+
+float mul(float a, float b) {
+        return a/b + 0;
+}
+**Folder: include
+***addition.h
+loat add(float a, float b);
+***multiplier.h
+float mul(float a, float b);
+
+*Folder: print_lib_src
+**CMakeLists.txt
+add_library(my_print
+printer.cpp)
+
+target_include_directories(my_print PUBLIC include)
+**printer.cpp
+#include <iostream>
+#include "printer.h"
+
+using namespace std;
+void print_result(string mystr, float value){
+        cout << mystr << value << endl;
+}
+**Folder: include
+***printer.h
+#include <string>
+
+void print_result(std::string my_str, float value);
+
