@@ -121,3 +121,11 @@ inherit autotools-brokensep
 
 EXTRA_OECONF += "--enable-something"
 => ./configure --enable-something
+
+# CMake
+install (TARGETS executable DESTINATION bin)
+#CMAKE_INSTALL_PREFIX:PATH default is /usr/local
+#To install binaries in /usr/bin
+cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr 
+make
+make install
