@@ -129,3 +129,15 @@ install (TARGETS executable DESTINATION bin)
 cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr 
 make
 make install
+
+# CMake recipe
+DESCRIPTION = "Example CMake app"
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file..."
+
+SRC_URI = "file://userprog.c \
+           file://CMakeList.txt \
+"
+S = "${WORKDIR}"
+
+inherit cmake
