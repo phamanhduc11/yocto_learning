@@ -130,7 +130,7 @@ cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr
 make
 make install
 
-# CMake recipe
+#CMake recipe
 DESCRIPTION = "Example CMake app"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file..."
@@ -141,3 +141,16 @@ SRC_URI = "file://userprog.c \
 S = "${WORKDIR}"
 
 inherit cmake
+# Extra CMAKE
+EXTRA_OECMAKE = "-DCMAKE_INSTALL_PREFIX:PATH=/usr"
+
+
+# Devshell 
+#Used for debugging or development or both, create a new shell terminal at ${S} location
+>bitbake -c devshell recipe
+
+#Environment is set up in new shell terminal for related recipe
+#Update changes in devshell script by creating a patch using git
+git format-patch -1 -o ${reciple path}
+
+add patch file in your recipe.bb
