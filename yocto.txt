@@ -154,3 +154,8 @@ EXTRA_OECMAKE = "-DCMAKE_INSTALL_PREFIX:PATH=/usr"
 git format-patch -1 -o ${reciple path}
 
 add patch file in your recipe.bb
+
+
+PROVIDES += "alias-name"
+PREFERRED_PROVIDER = "package"
+PREFERRED_VERSION_package = "x.x.%x"
