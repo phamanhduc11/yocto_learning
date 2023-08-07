@@ -158,4 +158,16 @@ add patch file in your recipe.bb
 
 PROVIDES += "alias-name"
 PREFERRED_PROVIDER = "package"
-PREFERRED_VERSION_package = "x.x.%x"
+PREFERRED_VERSION_package = "x.x.%x" in .conf
+
+COMPATIBLE_MACHINE = "" in .bb
+COMPATITBLE_HOST = ""
+
+# Offline build
+DL_DIR = "PATH" in local.conf
+BB_GENRATE_MIRROR_TARBALLS "1" in local.conf
+
+# Fetch source only
+bitbake target --runonly=fetch
+
+BB_NO_NETWORK = "1" in local.conf => bitbake will not try to access internet.
