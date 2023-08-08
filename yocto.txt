@@ -171,3 +171,6 @@ BB_GENRATE_MIRROR_TARBALLS "1" in local.conf
 bitbake target --runonly=fetch
 
 BB_NO_NETWORK = "1" in local.conf => bitbake will not try to access internet.
+
+machine.conf contains info for choosing which kernel recipe will be used by
+PREFERRED_PROVIDER_virtual/kernel = ""
