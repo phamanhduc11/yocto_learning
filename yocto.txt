@@ -174,3 +174,17 @@ BB_NO_NETWORK = "1" in local.conf => bitbake will not try to access internet.
 
 machine.conf contains info for choosing which kernel recipe will be used by
 PREFERRED_PROVIDER_virtual/kernel = ""
+
+## Patching kernel recipe
+# create kernel_%.append
+FILESEXTRAPATHS:prepend := "${THIS_DIR}/${PN}:"
+SRC_URI += "file://myfile.patch"
+
+# To fragmentally change config
+>bitbake -c menuconfig virtual/kernel
+>bitbake -c diffconfig virtual/kernel
+
+SRC_URI += "file://myconfig.cfg"
+
+# In-tree defconfig
+KBUILD_DEFCONFIG_KMACHINE ?= mydefconfig
